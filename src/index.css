@@ -119,6 +119,26 @@ body {
   box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.4);
 }
 
+.build-stamp {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 40;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid hsla(222, 12%, 28%, 0.75);
+  border-radius: 999px;
+  background-color: hsla(222, 16%, 12%, 0.92);
+  color: var(--text-muted);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1;
+  pointer-events: auto;
+  user-select: none;
+}
+
 .app-title-group h1 {
   font-size: 1.8rem;
   font-weight: 600;

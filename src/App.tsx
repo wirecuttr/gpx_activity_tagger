@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { DropZone } from "./components/DropZone";
 import { ActivityTable } from "./components/ActivityTable";
 import { UpdateControl } from "./components/UpdateControl";
+import { BuildStamp } from "./components/BuildStamp";
 import { GPXInfo, parseGPXFile, tagGPXFile } from "./utils/gpxParser";
 import JSZip from "jszip";
 
@@ -247,6 +248,7 @@ export const App: React.FC = () => {
 
         <ActivityTable files={files} onRemove={handleRemoveFile} />
       </div>
+      <BuildStamp />
     </div>
   );
 };
