@@ -216,7 +216,7 @@ export const App: React.FC = () => {
           </div>
           <h3 style={{ fontSize: "1.05rem", color: "var(--text-primary)", marginTop: "0.5rem" }}>How to use:</h3>
           <ol style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
-            <li>Drag & drop your GPX files or select a folder in the area below.</li>
+            <li>Drag & drop your GPX files or select a folder in the area below. Only GPX files are supported.</li>
             <li>Review the loaded files, their dates, and any pre-existing activity tags.</li>
             <li>Enter (i.e. type) your target activity type/sport name in the text input box.</li>
             <li>Click the download button. You will receive either a direct GPX file (for single files) or a packaged ZIP file (for batch files) containing your newly tagged activities.</li>
