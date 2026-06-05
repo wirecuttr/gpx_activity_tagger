@@ -5,6 +5,22 @@ import { UpdateControl } from "./components/UpdateControl";
 import { GPXInfo, parseGPXFile, tagGPXFile } from "./utils/gpxParser";
 import JSZip from "jszip";
 
+const downloadBlob = (blob: Blob, fileName: string) => {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = fileName;
+  link.style.display = "none";
+  document.body.appendChild(link);
+  link.click();
+
+  window.setTimeout(() => {
+    link.remove();
+    URL.revokeObjectURL(url);
+  }, 30000);
+};
+
 export const App: React.FC = () => {
   const [files, setFiles] = useState<GPXInfo[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -46,17 +62,9 @@ export const App: React.FC = () => {
         const gpxContent = tagGPXFile(targetFile, newType);
 
         const blob = new Blob([gpxContent], { type: "application/gpx+xml;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
-
-        const link = document.createElement("a");
-        link.href = url;
         // Strip .gpx from name and append _tagged.gpx
         const baseName = targetFile.fileName.replace(/\.gpx$/i, "");
-        link.download = `${baseName}_tagged.gpx`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
+        downloadBlob(blob, `${baseName}_tagged.gpx`);
 
         setFiles((prev) =>
           prev.map((f) => (f.id === targetFile.id ? { ...f, status: "success", currentType: newType.trim() } : f))
@@ -72,16 +80,8 @@ export const App: React.FC = () => {
           zip.file(`${baseName}_tagged.gpx`, gpxContent);
         });
 
-        const zipBlob = await zip.generateAsync({ type: "blob" });
-        const url = URL.createObjectURL(zipBlob);
-
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "tagged_gpx_activities.zip";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
+        const zipBlob = await zip.generateAsync({ type: "blob", mimeType: "application/zip" });
+        downloadBlob(zipBlob, "tagged_gpx_activities.zip");
 
         const validIds = new Set(validFiles.map((f) => f.id));
         setFiles((prev) =>
