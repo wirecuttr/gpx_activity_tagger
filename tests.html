@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GPX Parser Unit Tests</title>
+    <style>
+      body {
+        background: #0b0f19;
+        color: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        padding: 2.5rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #1e293b;
+        padding-bottom: 1rem;
+      }
+      .test-case {
+        background: #111827;
+        border: 1px solid #1f2937;
+        border-radius: 8px;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .test-case.pass {
+        border-left: 4px solid #10b981;
+      }
+      .test-case.fail {
+        border-left: 4px solid #ef4444;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .name {
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+      .status {
+        font-weight: bold;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+      }
+      .status.pass {
+        background: rgba(16, 185, 129, 0.15);
+        color: #10b981;
+      }
+      .status.fail {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+      }
+      pre {
+        background: #030712;
+        padding: 0.75rem;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.85rem;
+        color: #9ca3af;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>GPX Parser Unit Tests</h1>
+    <div id="test-results">Running tests...</div>
+    <script type="module" src="/src/utils/gpxParser.test.ts"></script>
+  </body>
+</html>
